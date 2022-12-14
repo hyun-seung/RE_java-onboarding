@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Problem1 {
@@ -32,15 +33,34 @@ public class Problem1 {
     }
 
     private static int getAnswer(int pobi, int crong) {
-        if (pobi > crong) {
-            return 1;
+        return ResultStatus.fromTwoObject(pobi, crong)
+                .getResult();
+    }
+
+    private enum ResultStatus {
+        EQUAL(0, 0),
+        LEFT_MORE_BIGGER(1, 1),
+        RIGHT_MORE_BIGGER(2, -1);
+
+        private final int resultValue;
+        private final Integer compareValue;
+
+        ResultStatus(int resultValue, int compareValue) {
+            this.resultValue = resultValue;
+            this.compareValue = compareValue;
         }
 
-        if(pobi < crong) {
-            return 2;
+        public static ResultStatus fromTwoObject(int object1, int object2) {
+            int compare = Integer.compare(object1, object2);
+            return Arrays.stream(ResultStatus.values())
+                    .filter(resultStatus -> resultStatus.compareValue.equals(compare))
+                    .findAny()
+                    .orElseThrow();
         }
 
-        return 0;
+        public int getResult() {
+            return resultValue;
+        }
     }
 
     private static int getMaxAboutPages(List<Integer> pages) {
