@@ -17,7 +17,20 @@ public class Problem2 {
             return "제한사항을 확인해주세요!";
         }
 
+        answer = solve(cryptogram);
+
         return answer;
+    }
+
+    private static String solve(String cryptogram) {
+        int firstDuplicationPoint = getFirstDuplicationPoint(cryptogram);
+
+        if(firstDuplicationPoint != -1) {
+            int endDuplicationPoint = getEndDuplicationPoint(cryptogram, firstDuplicationPoint);
+            cryptogram = cutDuplicationPoint(cryptogram, firstDuplicationPoint, endDuplicationPoint);
+            return solve(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static boolean validate(String target) {
