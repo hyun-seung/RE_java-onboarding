@@ -70,4 +70,8 @@ public class Problem2 {
 
         return endPoint;
     }
+
+    private static String cutDuplicationPoint(String target, int startPoint, int endPoint) {
+        return target.substring(0, startPoint) + target.substring(endPoint);
+    }
 }
