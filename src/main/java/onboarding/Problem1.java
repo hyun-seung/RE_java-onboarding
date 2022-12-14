@@ -19,10 +19,16 @@ public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (!validate(pobi) && !validate(crong)) {
+            return -1;
+        }
+
+        System.out.println(addition(97));
+
         return answer;
     }
 
-    private boolean validate(List<Integer> pages) {
+    private static boolean validate(List<Integer> pages) {
         try {
             isTwoPages(pages);
             isLowerThanFirstPage(pages);
@@ -37,13 +43,13 @@ public class Problem1 {
         return true;
     }
 
-    private void isTwoPages(List<Integer> pages) {
+    private static void isTwoPages(List<Integer> pages) {
         if (pages.size() != 2) {
             throw new IllegalArgumentException(IS_NOT_TWO_PAGES);
         }
     }
 
-    private void isLowerThanFirstPage(List<Integer> pages) {
+    private static void isLowerThanFirstPage(List<Integer> pages) {
         for (Integer page : pages) {
             if (page < FIRST_PAGE) {
                 throw new IllegalArgumentException(IS_LOWER_THAN_FIRST_PAGE);
@@ -51,7 +57,7 @@ public class Problem1 {
         }
     }
 
-    private void isBiggerThanLastPage(List<Integer> pages) {
+    private static void isBiggerThanLastPage(List<Integer> pages) {
         for (Integer page : pages) {
             if (page > LAST_PAGE) {
                 throw new IllegalArgumentException(IS_BIGGER_THAN_LAST_PAGE);
@@ -59,21 +65,31 @@ public class Problem1 {
         }
     }
 
-    private void isLeftPageOdd(Integer page) {
+    private static void isLeftPageOdd(Integer page) {
         if (page % 2 != 1) {
             throw new IllegalArgumentException(LEFT_PAGE_IS_NOT_ODD);
         }
     }
 
-    private void isRightPageEven(Integer page) {
+    private static void isRightPageEven(Integer page) {
         if (page % 2 != 0) {
             throw new IllegalArgumentException(RIGHT_PAGE_IS_NOT_EVEN);
         }
     }
 
-    private void isRightBookPages(List<Integer> pages) {
+    private static void isRightBookPages(List<Integer> pages) {
         if (pages.get(LEFT) + 1 != pages.get(RIGHT)) {
             throw new IllegalArgumentException(IS_NOT_RIGHT_BOOK_PAGES);
         }
+    }
+
+    private static int addition(Integer page) {
+        int result = 0;
+
+        while(page > 0) {
+            result += page % 10;
+            page /= 10;
+        }
+        return result;
     }
 }
