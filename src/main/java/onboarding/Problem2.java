@@ -58,4 +58,16 @@ public class Problem2 {
         }
         return -1;
     }
+
+    private static int getEndDuplicationPoint(String target, int startPoint) {
+        char duplicationCharacter = target.charAt(startPoint);
+
+        int endPoint = startPoint + 1;
+
+        while (endPoint < target.length() && target.charAt(endPoint) == duplicationCharacter) {
+            endPoint++;
+        }
+
+        return endPoint;
+    }
 }
