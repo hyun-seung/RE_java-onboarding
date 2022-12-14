@@ -17,9 +17,6 @@ public class Problem2 {
             return "제한사항을 확인해주세요!";
         }
 
-
-
-
         return answer;
     }
 
@@ -51,5 +48,14 @@ public class Problem2 {
         if (!target.matches(lowerAlphaRegex)) {
             throw new IllegalArgumentException(IS_NOT_LOWER_ALPHA);
         }
+    }
+
+    private static int getFirstDuplicationPoint(String target) {
+        for (int i = 0; i < target.length() - 1; i++) {
+            if (target.charAt(i) == target.charAt(i + 1)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
