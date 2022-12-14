@@ -23,10 +23,21 @@ public class Problem1 {
             return -1;
         }
 
+        int pobiMaxValue = getMaxAboutPages(pobi);
+        int crongMaxValue = getMaxAboutPages(crong);
+
+
+
         return answer;
     }
 
+    private static int getMaxAboutPages(List<Integer> pages) {
+        return Math.max(getMaxAboutOnePage(pages.get(LEFT)), getMaxAboutOnePage(pages.get(RIGHT)));
+    }
 
+    private static int getMaxAboutOnePage(Integer page) {
+        return Math.max(addition(page), multiplication(page));
+    }
 
     private static boolean validate(List<Integer> pages) {
         try {
@@ -94,7 +105,7 @@ public class Problem1 {
     }
 
     private static int multiplication(Integer page) {
-        int result = 0;
+        int result = 1;
 
         while(page > 0) {
             result *= page % 10;
