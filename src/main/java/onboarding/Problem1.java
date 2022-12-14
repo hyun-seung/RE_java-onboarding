@@ -23,10 +23,10 @@ public class Problem1 {
             return -1;
         }
 
-        System.out.println(addition(97));
-
         return answer;
     }
+
+
 
     private static boolean validate(List<Integer> pages) {
         try {
@@ -88,6 +88,16 @@ public class Problem1 {
 
         while(page > 0) {
             result += page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
+    private static int multiplication(Integer page) {
+        int result = 0;
+
+        while(page > 0) {
+            result *= page % 10;
             page /= 10;
         }
         return result;
