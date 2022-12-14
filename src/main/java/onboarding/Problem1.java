@@ -19,7 +19,7 @@ public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if (!validate(pobi) && !validate(crong)) {
+        if (!validate(pobi) || !validate(crong)) {
             return -1;
         }
 
