@@ -26,9 +26,21 @@ public class Problem1 {
         int pobiMaxValue = getMaxAboutPages(pobi);
         int crongMaxValue = getMaxAboutPages(crong);
 
-
+        answer = getAnswer(pobiMaxValue, crongMaxValue);
 
         return answer;
+    }
+
+    private static int getAnswer(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        }
+
+        if(pobi < crong) {
+            return 2;
+        }
+
+        return 0;
     }
 
     private static int getMaxAboutPages(List<Integer> pages) {
@@ -97,7 +109,7 @@ public class Problem1 {
     private static int addition(Integer page) {
         int result = 0;
 
-        while(page > 0) {
+        while (page > 0) {
             result += page % 10;
             page /= 10;
         }
@@ -107,7 +119,7 @@ public class Problem1 {
     private static int multiplication(Integer page) {
         int result = 1;
 
-        while(page > 0) {
+        while (page > 0) {
             result *= page % 10;
             page /= 10;
         }
