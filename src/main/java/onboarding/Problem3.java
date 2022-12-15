@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Arrays;
+
 public class Problem3 {
 
     private static final int FIRST_NUMBER = 1;
@@ -41,6 +43,43 @@ public class Problem3 {
     private static void isLowerThanLastNumber(int number) {
         if (number > LAST_NUMBER) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static int count(int number) {
+        int result = 0;
+
+        while (number > 0) {
+            if (RIGHTS.isInClass(number % 10)) {
+                result += 1;
+            }
+            number /= 10;
+        }
+
+        return result;
+    }
+
+    private enum RIGHTS {
+        THREE(3),
+        SIX(6),
+        NINE(9);
+
+        private final Integer rightNumber;
+
+        RIGHTS(int rightNumber) {
+            this.rightNumber = rightNumber;
+        }
+
+        public static boolean isInClass(int number) {
+            RIGHTS rights = Arrays.stream(values())
+                    .filter(value -> value.rightNumber.equals(number))
+                    .findAny()
+                    .orElse(null);
+
+            if (rights.equals(null)) {
+                return false;
+            }
+            return true;
         }
     }
 }
