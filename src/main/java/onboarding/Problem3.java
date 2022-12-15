@@ -14,7 +14,19 @@ public class Problem3 {
             return -1;
         }
 
+        answer = getAnswer(number);
+
         return answer;
+    }
+
+    private static int getAnswer(int number) {
+        int result = 0;
+
+        for (int i = 1; i <= number; i++) {
+            result += count(i);
+        }
+
+        return result;
     }
 
     private static boolean validate(int number) {
@@ -46,7 +58,7 @@ public class Problem3 {
         }
     }
 
-    public static int count(int number) {
+    private static int count(int number) {
         int result = 0;
 
         while (number > 0) {
@@ -76,7 +88,7 @@ public class Problem3 {
                     .findAny()
                     .orElse(null);
 
-            if (rights.equals(null)) {
+            if (rights == null) {
                 return false;
             }
             return true;
